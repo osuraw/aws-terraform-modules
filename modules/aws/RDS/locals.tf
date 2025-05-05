@@ -9,16 +9,9 @@
 #
 # --------------------------------------------------------------------------------------
 
-terraform {
-  required_version = ">= 1.3.8"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = ">= 3.1"
-    }
-  }
+locals {
+  identifier                = lower(join("-", [var.project, var.application, var.environment, var.region, var.engine, "db"]))
+  final_snapshot_identifier = "${local.identifier}-final-snapshot-${var.final_snapshot_identifier_suffix}"
+  parameter_group_name      = "${local.identifier}-pg"
+  option_group_name         = "${local.identifier}-og"
 }
