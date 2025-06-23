@@ -24,6 +24,7 @@ resource "aws_eks_node_group" "eks_node_group" {
     ignore_changes = [
       launch_template, scaling_config
     ]
+    create_before_destroy = var.create_before_destroy
   }
 
   launch_template {

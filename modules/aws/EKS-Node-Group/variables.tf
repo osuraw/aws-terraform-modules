@@ -80,3 +80,8 @@ variable "launch_template_version" {
   type    = string
   default = "$Latest"
 }
+variable "create_before_destroy" {
+  type        = bool
+  default     = false
+  description = "Life-cycle config ensure create_before_destroy."
+}
